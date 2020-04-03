@@ -2,42 +2,10 @@ const newGuid = require("./Guid");
 const config = require("./Config");
 const fps = config.game.fps;
 
-class Controls {
-  constructor() {
-    this.mapping = {
-      38: "up",
-      40: this.down,
-      37: this.left,
-      39: this.right,
-    };
-  }
-  
-  process(keyPressed) {
-    this.mapping[keyPressed]();
-  }
-  
-  up() {
-    
-  }
-  
-  down() {
-    
-  }
-  
-  left() {
-    
-  }
-  
-  right() {
-    
-  }
-}
-
 class GameClient {
   constructor(gameConnection) {
     this.id = newGuid();
     this.controllerState = {};
-    this.controls = new Controls();
     this.gameConnection = gameConnection;
   }
   
@@ -46,14 +14,23 @@ class GameClient {
   }
   
   tick() {
+    // Only send the message on change, ideally.
     this.gameConnection.sendState(this.id, this.controllerState);
   }
   
   processKey(type, event) {    
+    
+    const mapping = {
+      38: "up",
+      40: "down",
+      37: "left",
+      39: "right",
+    };
+    
     if(type === "keydown") {
-      this.controllerState[event.keyCode] = true; 
+      this.controllerState[mapping[event.keyCode]] = true; 
     } else if (type === "keyup") {
-      delete this.controllerState[event.keyCode];
+      delete this.controllerState[mapping[event.keyCode]];
     }
   }  
 }

@@ -15,6 +15,7 @@ async function startGame(useRealData = false) {
   window.addEventListener("keydown", (keyInfo) => { client.processKey("keydown", keyInfo); }, false);      
   window.addEventListener("keyup",  (keyInfo) => { client.processKey("keyup", keyInfo); }, false);
   
+  client.start();
   game.start();
   ui.startRendering(game);
   

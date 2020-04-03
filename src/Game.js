@@ -8,6 +8,27 @@ class Character {
     this.x = -150;
     this.y = -305;    
   }
+  
+  processKey(command) {
+    this[command]();
+  }
+  
+  up() {
+    this.y += 100;
+  }
+  
+  down() {
+    this.y += -100;
+  }
+  
+  left() {
+    
+  }
+  
+  right() {
+    
+  }
+  
 }
 
 class Map {
@@ -18,7 +39,6 @@ class Map {
 }
 
 
-
 class Game {
   constructor(platformIds) {
     
@@ -27,9 +47,17 @@ class Game {
       new Map("donut1", "https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194")
     ];
     
-    this.players = [
+    this.characters = [
       new Character("mario")
     ];
+  }
+  
+  receiveState(playerId, controlState) {
+    // Pretend there's multiple player handling here
+    const keysPressed = Object.getOwnPropertyNames(controlState);
+    for (const heldKey of keysPressed) { 
+      this.players[0].processKey(heldKey);
+    }
   }
   
   start() {    
@@ -52,15 +80,7 @@ class Game {
   
   checkForWinners() {
     
-  }  
-  
-  processControls() {
-    const keysPressed = Object.getOwnPropertyNames(this.keysCurrentlyPressed);
-    for (const heldKey of keysPressed) {      
-      this.controls.process(heldKey);
-    }
   }
-
 }
 
 
