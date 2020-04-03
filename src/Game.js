@@ -15,11 +15,11 @@ class Character {
   }
   
   up() {
-    this.y += -10;
+    this.y += 10;
   }
   
   down() {
-    this.y += 10;
+    this.y += -10;
   }
   
   left() {
