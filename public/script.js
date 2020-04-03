@@ -103,9 +103,9 @@ eval("module.exports = {\n  game: {\n    ticksPerSecond: 1,\n    fps: 30\n  }\n}
   !*** ./src/Game.js ***!
   \*********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\n\nclass Game {\n  constructor(platformIds) {\n    this.keysCurrentlyPressed = {};\n    this.controls = new Controls();\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    this.processControls();\n    \n  }\n  \n  processControls() {\n    const keysPressed = Object.getOwnPropertyNames(this.keysCurrentlyPressed);\n    for (const heldKey of keysPressed) {      \n      this.controls.process(heldKey);\n    }\n  }\n  \n  processKey(type, event) {\n    // 38 up\n    // 40 down\n    // 37 left\n    // 39 right\n    \n    if(type === \"keydown\") {\n      this.keysCurrentlyPressed[event.keyCode] = true; \n      console.log(event.keyCode);\n    } else if (type === \"keyup\") {\n      delete this.keysCurrentlyPressed[event.keyCode];\n    }\n  }\n}\n\nclass Controls {\n  constructor() {\n    this.mapping = {\n      38: this.up,\n      40: this.down,\n      37: this.left,\n      39: this.right,\n    };\n  }\n  \n  process(keyPressed) {\n    this.mapping[keyPressed]();\n  }\n  \n  up() {\n    \n  }\n  \n  down() {\n    \n  }\n  \n  left() {\n    \n  }\n  \n  right() {\n    \n  }\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
+eval("throw new Error(\"Module parse failed: Unterminated regular expression (20:3)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| \\n| class GameClient {\\n>   /\\n| }\\n| \");\n\n//# sourceURL=webpack://train/./src/Game.js?");
 
 /***/ }),
 

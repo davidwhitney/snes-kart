@@ -1,11 +1,35 @@
 const config = require("./Config");
 const cfg = config.game;
 
+class Character {
+  constructor(characterKey) {
+    this.characterKey = characterKey;
+    this.x = -150;
+    this.y = -305;    
+  }
+}
+
+class Map {
+  constructor(name, background) {
+    this.name = name;
+    this.background = background;
+  }
+}
+
+class GameClient {
+  /
+}
 
 class Game {
   constructor(platformIds) {
     this.keysCurrentlyPressed = {};
     this.controls = new Controls();
+    this.player = new Character("mario");
+    
+    this.activeMap = 0;
+    this.maps = [
+      new Map("donut1", "https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194")
+    ];    
   }
   
   start() {    
@@ -14,6 +38,8 @@ class Game {
   
   tick() {
     this.processControls();
+    // adjust map
+    // render character
     
   }
   
