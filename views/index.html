@@ -30,13 +30,8 @@
     </main>
     
     <script>
-      window.addEventListener("keydown", function(keyInfo) { 
-        heldDown[event.keyCode] = true; 
-      }, false);
-      
-      window.addEventListener("keyup",  function(keyInfo) { 
-        delete heldDown[event.keyCode]; 
-      }, false);
+      window.addEventListener("keydown", (keyInfo) => { train.processKey("keydown", keyInfo); }, false);      
+      window.addEventListener("keyup",  (keyInfo) => { train.processKey("keyup", keyInfo); }, false);
     </script>
   
 

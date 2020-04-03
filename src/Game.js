@@ -14,6 +14,14 @@ class Game {
   tick() {
     
   }
+  
+  processKey(type, event) {
+    if(type === "keydown") {
+      this.keysCurrentlyPressed[event.keyCode] = true; 
+    } else if (type === "keyup") {
+      delete this.keysCurrentlyPressed[event.keyCode];
+    }
+  }
 }
 
 module.exports = Game;
