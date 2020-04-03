@@ -14,6 +14,11 @@ body {
 }
 
 .game-area {
+  top: 0;  
+  position: relative;
+ 
+  perspective: 75px;
+  
   width: 640px;
   height: 480px;
   overflow: hidden;
@@ -21,8 +26,14 @@ body {
 }
 
 .map-layer { 
-  position: relative;  
-  top: -100px;
-  transform-origin: 50% 100%;
-  transform: rotateX(20deg)  translateZ(0);
+    
+  width: 640px;
+  height: 480px;
+  
+  background-image: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194');
+    
+  position: absolute;  
+  
+  transform-style: preserve-3d;
+  transform: rotateX(45deg) translateY(-100px);
 }
