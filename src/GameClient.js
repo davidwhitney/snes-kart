@@ -28,8 +28,7 @@ class GameClient {
   tick() {
     // Only send the message on change, ideally.
     this.gameConnection.sendState(this.id, this.controllerState);
-    this.latestState = this.gameConnection.syncState();
-    
+    this.latestState = this.gameConnection.syncState();    
     // Pick the right character at some point.
     this.camera.setLocation(this.latestState.characters[0].x, this.latestState.characters[0].y);
   }

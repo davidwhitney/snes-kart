@@ -8,10 +8,19 @@
     <meta name="description" content="A cool thing made with Glitch" />
     <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon" />
     
-    <script src="/script.js"></script>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>  
+
+    <main>
+      <div id="playfield" class="game-area">      
+        <div id="map" class="map-layer">
+        
+        </div>      
+      </div>
+    </main>  
+    
+    <script src="/script.js"></script>
     <script>
       let game;
       let heldDown = {};
@@ -20,14 +29,6 @@
       }
       start();
     </script>
-
-    <main>
-      <div id="playfield" class="game-area">      
-        <div class="map-layer">
-        
-        </div>      
-      </div>
-    </main>  
-
+    
   </body>
 </html>
