@@ -103,9 +103,9 @@ eval("module.exports = {\n  game: {\n    ticksPerSecond: 1,\n    fps: 30\n  }\n}
   !*** ./src/Game.js ***!
   \*********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("const newGuid = __webpack_require__(/*! ./Guid */ \"./src/Guid.js\");\nconst config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\nclass Character {\n  constructor(characterKey) {\n    this.characterKey = characterKey;\n    this.x = 0;\n    this.y = 0;  \n    this.r = 0;\n  }\n  \n  processKey(command) {\n    this[command]();\n  }\n  \n  up() {\n    this.y += 10;\n  }\n  \n  down() {\n    this.y += -10;\n  }\n  \n  left() {\n    this.r += 10;\n  }\n  \n  right() {\n    this.r += -10;\n  }\n  \n}\n\nclass Map {\n  constructor(name, background) {\n    this.name = name;\n    this.background = background;\n  }\n}\n\n\nclass Game {\n  constructor(platformIds) {\n    \n    this.activeMap = 0;\n    this.maps = [\n      new Map(\"donut1\", \"https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194\")\n    ];\n    \n    this.characters = [\n      new Character(\"mario\")\n    ];\n  }\n  \n  receiveState(playerId, controlState) {\n    // Pretend there's multiple player handling here\n    const keysPressed = Object.getOwnPropertyNames(controlState);\n    for (const heldKey of keysPressed) { \n      this.characters[0].processKey(heldKey);\n    }\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    this.processMessages();\n    this.processAi();\n    this.checkForWinners();    \n  }\n  \n  processMessages() {\n    \n  }\n  \n  processAi() {\n    \n  }\n  \n  checkForWinners() {\n    \n  }\n}\n\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (28:41)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|     const nextXY = this.nextSteps(0, 0, this.r);    \\n|     console.log(nextXY);\\n>     this.x -= (nextXY[0]) * this.stepSize);\\n|     this.y -= (nextXY[1]) * this.stepSize);\\n|   }\");\n\n//# sourceURL=webpack://train/./src/Game.js?");
 
 /***/ }),
 
