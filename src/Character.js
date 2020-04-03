@@ -5,6 +5,9 @@ class Character {
     this.x = 0;
     this.y = 0;  
     this.r = 0;
+    
+    this.rotateRate = 2;
+    this.movementRate = 2;
   }
   
   processKey(command) {
@@ -13,24 +16,24 @@ class Character {
   
   up() {
     const nextXY = this.nextSteps(0, 0, this.r);
-    this.x += nextXY[0];
-    this.y += nextXY[1];
+    this.x += (nextXY[0] * this.movementRate);
+    this.y += (nextXY[1] * this.movementRate);
   }
   
   down() {    
     const nextXY = this.nextSteps(0, 0, this.r); 
-    this.x -= nextXY[0];
-    this.y -= nextXY[1];
+    this.x -= (nextXY[0] * this.movementRate);
+    this.y -= (nextXY[1] * this.movementRate);
   }
   
   left() {
-    this.r += 1;
+    this.r += this.rotateRate;
     this.r = this.r >= 360 ? 0 : this.r;
     this.r = this.r <= -360 ? 0 : this.r;
   }
   
   right() {
-    this.r += -1;
+    this.r += -this.rotateRate;
     this.r = this.r >= 360 ? 0 : this.r;
     this.r = this.r < 0 ? 359 : this.r;
   }
