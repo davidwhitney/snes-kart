@@ -25,15 +25,12 @@ body {
   overflow: hidden;
 }
 
-.map-background {
+.map-layer {   
+  top: -305px;
+  left: -200px; 
+  
   width: 1024px;
   height: 1024px;
-  background-image: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194');  
-}
-
-.map-layer {   
-  top: -304px;
-  left: -150px;  
   position: absolute;  
   transform-style: preserve-3d;
 }
