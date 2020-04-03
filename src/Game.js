@@ -6,7 +6,8 @@ class Character {
   constructor(characterKey) {
     this.characterKey = characterKey;
     this.x = 0;
-    this.y = 0;    
+    this.y = 0;  
+    this.r = 0;
   }
   
   processKey(command) {
@@ -14,19 +15,19 @@ class Character {
   }
   
   up() {
-    this.y += 100;
+    this.y += 10;
   }
   
   down() {
-    this.y += -100;
+    this.y += -10;
   }
   
   left() {
-    
+    this.r -= 10;
   }
   
   right() {
-    
+    this.r += 0;
   }
   
 }

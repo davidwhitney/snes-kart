@@ -6,9 +6,10 @@ class Camera {
   constructor() {    
   }
   
-  setLocation(x, y) {
+  setLocation(x, y, r) {
     this.x = x;
     this.y = y;
+    this.r = r;
   }
 }
 
