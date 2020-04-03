@@ -37,7 +37,7 @@ class GameUi {
 
 function renderCameraPerspective(currentState, lastState) {
   
-  map.style.transform = `rotateX(40deg) rotate(180deg) translateY(${currentState.camera.y}px) translateX(${currentState.camera.x}px)`;
+  map.style.transform = `rotateX(40deg) rotate(${currentState.camera.r}deg) translateY(${currentState.camera.y}px) translateX(${currentState.camera.x}px)`;
 }
 
 module.exports = GameUi;

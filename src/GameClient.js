@@ -31,7 +31,7 @@ class GameClient {
     this.gameConnection.sendState(this.id, this.controllerState);
     this.latestState = this.gameConnection.syncState();    
     // Pick the right character at some point.
-    this.camera.setLocation(this.latestState.characters[0].x, this.latestState.characters[0].y);
+    this.camera.setLocation(this.latestState.characters[0].x, this.latestState.characters[0].y, this.latestState.characters[0].r);
   }
   
   processKey(type, event) {    

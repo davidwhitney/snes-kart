@@ -15,19 +15,19 @@ class Character {
   }
   
   up() {
-    this.y += 10;
-  }
-  
-  down() {
     this.y += -10;
   }
   
+  down() {
+    this.y += 10;
+  }
+  
   left() {
-    this.r -= 10;
+    this.r += 10;
   }
   
   right() {
-    this.r += 0;
+    this.r += -10;
   }
   
 }
