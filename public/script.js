@@ -87,6 +87,17 @@ var train =
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/Character.js":
+/*!**************************!*\
+  !*** ./src/Character.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\nclass Character {\n  constructor(characterKey) {\n    this.characterKey = characterKey;\n    this.x = 0;\n    this.y = 0;  \n    this.r = 0;\n  }\n  \n  processKey(command) {\n    this[command]();\n  }\n  \n  up() {\n    const nextXY = this.nextSteps(0, 0, this.r);\n    this.x += nextXY[0];\n    this.y += nextXY[1];\n  }\n  \n  down() {    \n    const nextXY = this.nextSteps(0, 0, this.r); \n    this.x -= nextXY[0];\n    this.y -= nextXY[1];\n  }\n  \n  left() {\n    this.r += 1;\n    this.r = this.r >= 360 ? 0 : this.r;\n    this.r = this.r <= -360 ? 0 : this.r;\n  }\n  \n  right() {\n    this.r += -1;\n    this.r = this.r >= 360 ? 0 : this.r;\n    this.r = this.r < 0 ? 359 : this.r;\n  }\n  \n  nextSteps(x, y, a) {\n    let xy = [];\n    if(45 <= a && a <= 135) {\n        xy = [1, this.cot(Math.PI*a/180)];\n    } else if(135 <= a && a <= 225) {\n        xy = [-this.tan(Math.PI*a/180), -1];\n    } else if(225 <= a && a <= 315) {\n        xy = [-1, -this.cot(Math.PI*a/180)];\n    } else {\n        xy = [this.tan(Math.PI*a/180), 1];\n    }\n    xy[0] = Math.round(x+xy[0]);\n    xy[1] = Math.round(y+xy[1]);\n    return xy;\n  }\n\n  cot(x) {\n      return 1/Math.tan(x);\n  }\n\n  tan(x) {\n      return Math.tan(x);\n  }\n}\n\nmodule.exports = Character;\n\n//# sourceURL=webpack://train/./src/Character.js?");
+
+/***/ }),
+
 /***/ "./src/Config.js":
 /*!***********************!*\
   !*** ./src/Config.js ***!
@@ -103,9 +114,9 @@ eval("module.exports = {\n  game: {\n    ticksPerSecond: 1,\n    fps: 30\n  }\n}
   !*** ./src/Game.js ***!
   \*********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (28:41)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|     const nextXY = this.nextSteps(0, 0, this.r);    \\n|     console.log(nextXY);\\n>     this.x -= (nextXY[0]) * this.stepSize);\\n|     this.y -= (nextXY[1]) * this.stepSize);\\n|   }\");\n\n//# sourceURL=webpack://train/./src/Game.js?");
+eval("const newGuid = __webpack_require__(/*! ./Guid */ \"./src/Guid.js\");\nconst config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst Character = __webpack_require__(/*! ./Character */ \"./src/Character.js\");\nconst Map = __webpack_require__(/*! ./Map */ \"./src/Map.js\");\nconst cfg = config.game;\n\nclass Game {\n  constructor(platformIds) {    \n    this.activeMap = 0;\n    this.maps = [\n      new Map(\"donut1\", \"https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194\")\n    ];\n    \n    this.characters = [\n      new Character(\"mario\")\n    ];\n  }\n  \n  receiveState(playerId, controlState) {\n    // Pretend there's multiple player handling here\n    const keysPressed = Object.getOwnPropertyNames(controlState);\n    for (const heldKey of keysPressed) { \n      this.characters[0].processKey(heldKey);\n    }\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    this.processMessages();\n    this.processAi();\n    this.checkForWinners();    \n  }\n  \n  processMessages() {\n    \n  }\n  \n  processAi() {\n    \n  }\n  \n  checkForWinners() {\n    \n  }\n}\n\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
 
 /***/ }),
 
@@ -127,7 +138,7 @@ eval("const newGuid = __webpack_require__(/*! ./Guid */ \"./src/Guid.js\");\ncon
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst fps = config.game.fps;\n    \nconst playfield = document.getElementById(\"playfield\");  \nconst map = document.getElementById(\"map\");\n\nclass GameUi {\n  \n  constructor() {\n    this._lastState = JSON.stringify({}); \n    this._renderingFunctions = [ \n      renderCameraPerspective\n    ];\n  }\n\n  startRendering(client) {\n    setInterval(() => this.draw(client), 1000 / fps);\n  }\n  \n  draw(client) {\n    if (JSON.stringify(client) === this._lastState) {\n      return; // No state has changed, do we need to re-render?\n    }\n    \n    const lastStateSnapshot = JSON.parse(this._lastState);\n    for (let renderer of this._renderingFunctions) {\n      const ret = renderer(client, lastStateSnapshot)\n      if (ret === -1) { // Renderer caused an early exit\n        break;\n      }\n    }\n    \n    this._lastState = JSON.stringify(client);\n  }\n}\n\n\nfunction renderCameraPerspective(currentState, lastState) {\n  \n  map.style.transform = `rotateX(40deg) rotate(${currentState.camera.r}deg) translateY(${currentState.camera.y}px) translateX(${currentState.camera.x}px)`;\n}\n\nmodule.exports = GameUi;\n\n//# sourceURL=webpack://train/./src/GameUi.js?");
+eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst fps = config.game.fps;\n    \nconst playfield = document.getElementById(\"playfield\");  \nconst map = document.getElementById(\"map\");\n\nclass GameUi {\n  \n  constructor() {\n    this._lastState = JSON.stringify({}); \n    this._renderingFunctions = [ \n      renderCameraPerspective\n    ];\n  }\n\n  startRendering(client) {\n    setInterval(() => this.draw(client), 1000 / fps);\n  }\n  \n  draw(client) {\n    if (JSON.stringify(client) === this._lastState) {\n      return; // No state has changed, do we need to re-render?\n    }\n    \n    const lastStateSnapshot = JSON.parse(this._lastState);\n    for (let renderer of this._renderingFunctions) {\n      const ret = renderer(client, lastStateSnapshot)\n      if (ret === -1) { // Renderer caused an early exit\n        break;\n      }\n    }\n    \n    this._lastState = JSON.stringify(client);\n  }\n}\n\n\nfunction renderCameraPerspective(currentState, lastState) {\n  console.log(currentState.camera.r);\n  map.style.transform = `rotateX(40deg) rotate(${currentState.camera.r}deg) translateY(${currentState.camera.y}px) translateX(${currentState.camera.x}px)`;\n}\n\nmodule.exports = GameUi;\n\n//# sourceURL=webpack://train/./src/GameUi.js?");
 
 /***/ }),
 
@@ -150,6 +161,17 @@ eval("function newGuid() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.repl
 /***/ (function(module, exports) {
 
 eval("\nclass LocalGameAdapter {\n  constructor(game) {\n    this.game = game;\n  }\n  \n  sendState(id, controllerState) {\n    this.game.receiveState(id, controllerState);\n  }\n  \n  syncState() {\n    // Gets latest server side state, just a shim here.\n    return this.game;\n  }\n}\n\nmodule.exports = LocalGameAdapter;\n\n//# sourceURL=webpack://train/./src/LocalGameAdapter.js?");
+
+/***/ }),
+
+/***/ "./src/Map.js":
+/*!********************!*\
+  !*** ./src/Map.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class Map {\n  constructor(name, background) {\n    this.name = name;\n    this.background = background;\n  }\n}\n\nmodule.exports = Map;\n\n//# sourceURL=webpack://train/./src/Map.js?");
 
 /***/ }),
 
