@@ -103,9 +103,9 @@ eval("module.exports = {\n  game: {\n    ticksPerSecond: 1,\n    fps: 30\n  }\n}
   !*** ./src/Game.js ***!
   \*********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("throw new Error(\"Module parse failed: Unterminated regular expression (20:3)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| \\n| class GameClient {\\n>   /\\n| }\\n| \");\n\n//# sourceURL=webpack://train/./src/Game.js?");
+eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\nclass Character {\n  constructor(characterKey) {\n    this.characterKey = characterKey;\n    this.x = -150;\n    this.y = -305;    \n  }\n}\n\nclass Map {\n  constructor(name, background) {\n    this.name = name;\n    this.background = background;\n  }\n}\n\n\n\nclass Game {\n  constructor(platformIds) {\n    \n    this.activeMap = 0;\n    this.maps = [\n      new Map(\"donut1\", \"https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2F6875.png?v=1585925318194\")\n    ];\n    \n    this.players = [\n      new Character(\"mario\")\n    ];\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    this.processMessages();\n    this.processAi();\n    this.checkForWinners();    \n  }\n  \n  processMessages() {\n    \n  }\n  \n  processAi() {\n    \n  }\n  \n  checkForWinners() {\n    \n  }\n  \n  processControls() {\n    const keysPressed = Object.getOwnPropertyNames(this.keysCurrentlyPressed);\n    for (const heldKey of keysPressed) {      \n      this.controls.process(heldKey);\n    }\n  }\n\n}\n\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
 
 /***/ }),
 
