@@ -12,12 +12,19 @@ class Game {
   }
   
   tick() {
+    this.processControls();
     
   }
   
   processKey(type, event) {
+    // 38 up
+    // 40 down
+    // 37 left
+    // 39 right
+    
     if(type === "keydown") {
       this.keysCurrentlyPressed[event.keyCode] = true; 
+      console.log(event.keyCode);
     } else if (type === "keyup") {
       delete this.keysCurrentlyPressed[event.keyCode];
     }

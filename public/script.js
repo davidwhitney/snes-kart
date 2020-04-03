@@ -105,7 +105,7 @@ eval("module.exports = {\n  game: {\n    ticksPerSecond: 1,\n    fps: 30\n  }\n}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\n\nclass Game {\n  constructor(platformIds) {\n    this.keysCurrentlyPressed = {};\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    \n  }\n  \n  processKey(type, event) {\n    if(type === \"keydown\") {\n      this.keysCurrentlyPressed[event.keyCode] = true; \n    } else if (type === \"keyup\") {\n      delete this.keysCurrentlyPressed[event.keyCode];\n    }\n  }\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
+eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\n\nclass Game {\n  constructor(platformIds) {\n    this.keysCurrentlyPressed = {};\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    \n    \n  }\n  \n  processKey(type, event) {\n    // 38 up\n    // 40 down\n    // 37 left\n    // 39 right\n    \n    if(type === \"keydown\") {\n      this.keysCurrentlyPressed[event.keyCode] = true; \n      console.log(event.keyCode);\n    } else if (type === \"keyup\") {\n      delete this.keysCurrentlyPressed[event.keyCode];\n    }\n  }\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
 
 /***/ }),
 
