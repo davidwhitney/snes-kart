@@ -10,6 +10,7 @@ class LocalGameAdapter {
   
   syncState() {
     // Gets latest server side state, just a shim here.
+    return this.game;
   }
 }
 

@@ -7,6 +7,7 @@ class GameClient {
     this.id = newGuid();
     this.controllerState = {};
     this.gameConnection = gameConnection;
+    this.latestState = null;
   }
   
   start() {    
@@ -16,6 +17,7 @@ class GameClient {
   tick() {
     // Only send the message on change, ideally.
     this.gameConnection.sendState(this.id, this.controllerState);
+    this.latestState = this.gameConnection.syncState();
   }
   
   processKey(type, event) {    

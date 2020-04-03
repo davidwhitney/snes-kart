@@ -17,7 +17,7 @@ async function startGame(useRealData = false) {
   
   client.start();
   game.start();
-  ui.startRendering(game);
+  ui.startRendering(client.latestState);
   
   // Temp
   return game;
