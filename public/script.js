@@ -127,7 +127,7 @@ eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Game = __webpack_require__(/*! ./Game */ \"./src/Game.js\");\nconst GameUi = __webpack_require__(/*! ./GameUi */ \"./src/GameUi.js\");\nlet game, ui;\n\nasync function startGame(useRealData = false) {\n  game = new Game();\n  ui = new GameUi(game);  \n  game.start();\n  ui.startRendering(game);\n  \n  return game;\n}\n\nmodule.exports = { startGame };\n\n//# sourceURL=webpack://train/./src/script.js?");
+eval("const Game = __webpack_require__(/*! ./Game */ \"./src/Game.js\");\nconst GameUi = __webpack_require__(/*! ./GameUi */ \"./src/GameUi.js\");\nlet game, ui;\n\nasync function startGame(useRealData = false) {\n  game = new Game();\n  ui = new GameUi(game);  \n  game.start();\n  ui.startRendering(game);\n  \n  // Temp\n  return game;\n}\n\nmodule.exports = { startGame };\n\n//# sourceURL=webpack://train/./src/script.js?");
 
 /***/ })
 

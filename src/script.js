@@ -8,6 +8,7 @@ async function startGame(useRealData = false) {
   game.start();
   ui.startRendering(game);
   
+  // Temp
   return game;
 }
 
