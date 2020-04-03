@@ -105,7 +105,7 @@ eval("module.exports = {\n  game: {\n    ticksPerSecond: 1,\n    fps: 30\n  }\n}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\n\nclass Game {\n  constructor(platformIds) {    \n  }\n  \n  start() {\n    \n  }\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
+eval("const config = __webpack_require__(/*! ./Config */ \"./src/Config.js\");\nconst cfg = config.game;\n\n\nclass Game {\n  constructor(platformIds) {\n    this.keysCurrentlyPressed = {};\n  }\n  \n  start() {    \n    setInterval(() => this.tick(), 1000 / cfg.fps);\n  }\n  \n  tick() {\n    \n  }\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack://train/./src/Game.js?");
 
 /***/ }),
 

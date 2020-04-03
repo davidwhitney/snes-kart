@@ -3,10 +3,15 @@ const cfg = config.game;
 
 
 class Game {
-  constructor(platformIds) {    
+  constructor(platformIds) {
+    this.keysCurrentlyPressed = {};
   }
   
-  start() {
+  start() {    
+    setInterval(() => this.tick(), 1000 / cfg.fps);
+  }
+  
+  tick() {
     
   }
 }

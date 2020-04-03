@@ -14,6 +14,7 @@
   <body>  
     <script>
       let game;
+      let heldDown = {};
       async function start() {
         game = await train.startGame();
       }
@@ -21,16 +22,22 @@
     </script>
 
     <main>
-      <div id="playfield" class="game-area">
-      
+      <div id="playfield" class="game-area">      
         <div class="map-layer">
-          &nbsp;
-        </div>
         
-      
-      
+        </div>      
       </div>
     </main>
+    
+    <script>
+      window.addEventListener("keydown", function(keyInfo) { 
+        heldDown[event.keyCode] = true; 
+      }, false);
+      
+      window.addEventListener("keyup",  function(keyInfo) { 
+        delete heldDown[event.keyCode]; 
+      }, false);
+    </script>
   
 
   </body>
