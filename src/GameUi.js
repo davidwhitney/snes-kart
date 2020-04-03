@@ -4,9 +4,12 @@ const fps = config.game.fps;
 class GameUi {
   
   constructor() {
-    this.playfield = document.getElementById("playfield");    
+    this.playfield = document.getElementById("playfield");  
+    this.map = document.getElementById("map-layer");
     this._lastState = JSON.stringify({}); 
-    this._renderingFunctions = [ ];
+    this._renderingFunctions = [ 
+      renderCameraPerspective
+    ];
   }
 
   startRendering(client) {
@@ -30,5 +33,9 @@ class GameUi {
   }
 }
 
+
+function renderCameraPerspective() {
+  console.log(this.map.top);
+}
 
 module.exports = GameUi;
