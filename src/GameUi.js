@@ -3,14 +3,14 @@ const fps = config.game.fps;
 
 class GameUi {
   
-  constructor(initialState) {
+  constructor() {
     this.playfield = document.getElementById("playfield");    
-    this._lastState = JSON.stringify(initialState);    
+    this._lastState = JSON.stringify({}); 
     this._renderingFunctions = [ ];
   }
 
-  startRendering(game) {
-    setInterval(() => this.draw(game), 1000 / fps);
+  startRendering(client) {
+    setInterval(() => this.draw(client.latestState), 1000 / fps);
   }
   
   draw(g) {

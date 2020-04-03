@@ -7,7 +7,7 @@ let game, ui, client, localGameAdapter;
 
 async function startGame(useRealData = false) {
   game = new Game();
-  ui = new GameUi(game);
+  ui = new GameUi();
   
   localGameAdapter = new LocalGameAdapter(game);
   
@@ -17,7 +17,7 @@ async function startGame(useRealData = false) {
   
   client.start();
   game.start();
-  ui.startRendering(client.latestState);
+  ui.startRendering(client);
   
   // Temp
   return game;

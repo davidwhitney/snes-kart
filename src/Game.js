@@ -56,7 +56,7 @@ class Game {
     // Pretend there's multiple player handling here
     const keysPressed = Object.getOwnPropertyNames(controlState);
     for (const heldKey of keysPressed) { 
-      this.players[0].processKey(heldKey);
+      this.characters[0].processKey(heldKey);
     }
   }
   
