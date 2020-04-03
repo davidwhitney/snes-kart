@@ -1,3 +1,4 @@
+const newGuid = require("./Guid");
 const config = require("./Config");
 const cfg = config.game;
 
@@ -51,7 +52,7 @@ class Game {
   
   checkForWinners() {
     
-  }
+  }  
   
   processControls() {
     const keysPressed = Object.getOwnPropertyNames(this.keysCurrentlyPressed);

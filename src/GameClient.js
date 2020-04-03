@@ -1,10 +1,11 @@
+const newGuid = require("./Guid");
 const config = require("./Config");
 const fps = config.game.fps;
 
 class Controls {
   constructor() {
     this.mapping = {
-      38: this.up,
+      38: "up",
       40: this.down,
       37: this.left,
       39: this.right,
@@ -33,17 +34,19 @@ class Controls {
 }
 
 class GameClient {
-  constructor() {
+  constructor(gameConnection) {
+    this.id = newGuid();
     this.controllerState = {};
     this.controls = new Controls();
+    this.gameConnection = gameConnection;
   }
   
   start() {    
-    setInterval(() => this.tick(), 1000 / cfg.fps);
+    setInterval(() => this.tick(), 1000 / fps);
   }
   
   tick() {
-    
+    this.gameConnection.sendState(this.id, this.controllerState);
   }
   
   processKey(type, event) {    
