@@ -27,7 +27,7 @@ body {
 
 .map-layer { 
   
-  top: -305px;
+  top: -304px;
   left: -150px;
   
   width: 1024px;
@@ -38,5 +38,4 @@ body {
   position: absolute;  
   
   transform-style: preserve-3d;
-  transform: rotateX(45deg) translateY(-100px);
 }

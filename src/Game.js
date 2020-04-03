@@ -5,8 +5,8 @@ const cfg = config.game;
 class Character {
   constructor(characterKey) {
     this.characterKey = characterKey;
-    this.x = -150;
-    this.y = -305;    
+    this.x = 0;
+    this.y = 0;    
   }
   
   processKey(command) {
