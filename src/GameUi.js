@@ -1,8 +1,7 @@
 const config = require("./Config");
 const fps = config.game.fps;
     
-const playfield = document.getElementById("playfield");  
-const map = document.getElementById("map");
+const map = document.getElementById("world");
 
 class GameUi {
   

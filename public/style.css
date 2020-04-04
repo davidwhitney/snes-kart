@@ -18,14 +18,14 @@ body {
   background-color: #589816;
   position: relative;
  
-  perspective: 45px;
+  perspective: 85px;
   
-  width: 640px;
-  height: 480px;
+  width: 1280px;
+  height: 1120px;
   overflow: hidden;
 }
 
-#background {
+.bg-1 {
   margin-top: 120px;
   background: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2Fhills.png?v=1585998163246');
   width: 640px;
@@ -33,19 +33,20 @@ body {
   background-size: cover;
 }
 
-.map-layer {
+.world-layer {
   z-index: 50;
   
-  top: -305px;
-  left: -200px;   
+  top: -1450px;
+  left: -800px;   
   
-  width: 1024px;
-  height: 1024px;
+  width: 4096px;
+  height: 4096px;
   position: absolute;  
   transform-style: preserve-3d;
 }
 
 .lower-screen {
+  display: none;
   position: absolute;
   top: 290px;
   z-index: 100;

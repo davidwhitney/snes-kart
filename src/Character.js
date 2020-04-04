@@ -6,7 +6,7 @@ class Character {
     this.y = 0;  
     this.r = 0;
     
-    this.rotateRate = 2;
+    this.rotateRate = 1;
     this.movementRate = 2;
   }
   
