@@ -28,14 +28,14 @@ class Character {
   
   left() {
     this.r += this.rotateRate;
-    this.r = this.r >= 360 ? 0 : this.r;
-    this.r = this.r <= -360 ? 0 : this.r;
+    //this.r = this.r >= 360 ? 0 : this.r;
+    //this.r = this.r <= -360 ? 0 : this.r;
   }
   
   right() {
     this.r += -this.rotateRate;
-    this.r = this.r >= 360 ? 0 : this.r;
-    this.r = this.r < 0 ? 359 : this.r;
+    //this.r = this.r >= 360 ? 0 : this.r;
+    //this.r = this.r < 0 ? 359 : this.r;
   }
   
   nextSteps(x, y, a) {
@@ -49,8 +49,8 @@ class Character {
     } else {
         xy = [this.tan(Math.PI*a/180), 1];
     }
-    xy[0] = Math.round(x+xy[0]);
-    xy[1] = Math.round(y+xy[1]);
+    xy[0] = x+xy[0]; //Math.round(x+xy[0]);
+    xy[1] = y+xy[1]; //Math.round(y+xy[1]);
     return xy;
   }
 
