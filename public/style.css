@@ -17,6 +17,7 @@ body {
 .game-area {
   top: 0;  
   background-color: black;
+  z-background: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2Fgrass.png?v=1586001252530');
   position: relative;
  
   perspective: 85px;
@@ -30,7 +31,7 @@ body {
   margin-top: 200px;
   background: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2Fhills.png?v=1585998163246');
   width: 1280px;
-  height: 320px;
+  height: 270px;
   background-size: cover;
 }
 
