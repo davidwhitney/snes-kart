@@ -28,14 +28,14 @@ class Character {
   
   left() {
     this.r += this.rotateRate;
-    //this.r = this.r >= 360 ? 0 : this.r;
-    //this.r = this.r <= -360 ? 0 : this.r;
+    this.r = this.r >= 360 ? 0 : this.r;
+    this.r = this.r <= -360 ? 0 : this.r;
   }
   
   right() {
     this.r += -this.rotateRate;
-    //this.r = this.r >= 360 ? 0 : this.r;
-    //this.r = this.r < 0 ? 359 : this.r;
+    this.r = this.r >= 360 ? 0 : this.r;
+    this.r = this.r < 0 ? 359 : this.r;
   }
   
   nextSteps(x, y, a) {
