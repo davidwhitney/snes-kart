@@ -16,13 +16,19 @@ body {
 .game-area {
   top: 0;  
   position: relative;
-  background-color: #A0B5FF;
  
   perspective: 50px;
   
   width: 640px;
   height: 480px;
   overflow: hidden;
+}
+
+#background {
+  background: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2Fhills.png?v=1585998163246');
+  width: 640px;
+  height: 200px;
+  background-size: cover;
 }
 
 .map-layer {   
