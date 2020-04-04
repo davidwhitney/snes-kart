@@ -15,9 +15,10 @@ body {
 
 .game-area {
   top: 0;  
+  background-color: #589816;
   position: relative;
  
-  perspective: 50px;
+  perspective: 45px;
   
   width: 640px;
   height: 480px;
@@ -25,13 +26,14 @@ body {
 }
 
 #background {
+  margin-top: 120px;
   background: url('https://cdn.glitch.com/92064d7f-02e4-40c8-b920-aca0beefd736%2Fhills.png?v=1585998163246');
   width: 640px;
-  height: 200px;
+  height: 80px;
   background-size: cover;
 }
 
-.map-layer {   
+.map-layer {
   top: -305px;
   left: -200px; 
   
